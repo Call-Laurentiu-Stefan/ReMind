@@ -1,0 +1,123 @@
+.header {
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  background: linear-gradient(to right, #322c2b, #3a3433);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  padding-top: 10%;
+  height: 110px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 8px 16px;
+  margin-right: 35px;
+  width: 300px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+}
+
+.search-bar:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.search-bar:focus-within {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: #2563eb;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+  transform: translateY(-1px);
+}
+
+.search-bar::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  background: linear-gradient(45deg, #2563eb, #7c3aed);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.search-bar:focus-within::before {
+  opacity: 0.5;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 8px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  background: transparent;
+  transition: color 0.3s ease;
+}
+
+.search-bar:focus-within input {
+  color: #1a1a1a;
+}
+
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease;
+}
+
+.search-bar:focus-within input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.search-bar .icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.5;
+  margin-left: 8px;
+  transition: all 0.3s ease;
+  filter: invert(1);
+}
+
+.search-bar:focus-within .icon {
+  opacity: 0.7;
+  filter: none;
+  transform: scale(1.1);
+}
+
+@keyframes searchPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+.search-bar.searching {
+  animation: searchPulse 2s infinite;
+}

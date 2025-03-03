@@ -1,0 +1,122 @@
+.summarize-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-weight: 500;
+  overflow: hidden;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  background: #00000070;
+  color: white;
+}
+
+.summarize-button:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
+
+.summarize-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.summarize-button.loading {
+  background: linear-gradient(to right, #2563eb, #4f46e5, #2563eb);
+  background-size: 200% 100%;
+  animation: gradient-x 3s ease infinite;
+}
+
+.button-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.button-image {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+}
+
+.summarize-button:hover:not(:disabled) .button-image {
+  transform: rotate(10deg);
+}
+
+.spinner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  animation-timing-function: cubic-bezier(0.6, 0.2, 0.4, 0.9);
+}
+
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+.summary {
+  margin-top: 16px;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

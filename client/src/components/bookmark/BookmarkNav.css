@@ -1,0 +1,465 @@
+.bookmark-nav {
+  height: 95vh;
+  background: linear-gradient(to right, #322c2b, #322c2b);
+  padding: 1.25rem;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  font-size: 0.875rem;
+  box-shadow: 8px 0 25px -5px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.resizable-container {
+  position: sticky !important;
+  top: 0;
+  height: 100vh;
+  background: linear-gradient(to right, #322c2b, #322c2b);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.bookmark-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bookmark-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bookmark-nav::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.bookmark-nav:hover::-webkit-scrollbar-thumb {
+  background: #db3434;
+}
+
+.resizable-container .resizable-handle {
+  background: #e2e8f0 !important;
+  border-radius: 3px;
+  width: 10px !important;
+  right: -5px !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  cursor: col-resize;
+  transition: background 0.3s ease;
+}
+
+.resizable-container .resizable-handle:hover {
+  background: #db3434 !important;
+}
+
+.view-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.view-button {
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #e24a4a;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.view-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #4f4a49, #4f4a49);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  border-radius: 0.75rem;
+}
+
+.view-button.active {
+  background: #4f4a49;
+  color: #db3434;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+  transform: translateY(-1px);
+}
+
+.view-button:hover:not(.active) {
+  color: #db3434;
+  background-color: #433b39;
+  transform: translateY(-1px);
+}
+
+.view-button svg {
+  stroke-width: 3;
+  width: 18px;
+}
+
+.root-title {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #e7d9cf;
+}
+
+.add-root-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #4f4a49;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  align-items: center;
+}
+
+.root-input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.675rem;
+  background: #e7d9cf;
+  border: 1px solid #e0e7ff;
+  border-radius: 0.375rem;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.root-input:focus {
+  box-shadow: 0 0 0 1.5px #db3434;
+  outline: none;
+}
+
+.styled-add-button {
+  padding: 0.5rem 0.3rem;
+  border: 4px;
+  background: #e24a4a;
+  color: white;
+  cursor: pointer;
+  border-radius: 0.375rem;
+  font-size: 0.675rem;
+  font-weight: 500;
+  transition: transform 0.15s ease, background 0.3s ease;
+}
+
+.styled-add-button:hover {
+  background: #db3434;
+}
+
+.styled-add-button:active {
+  transform: scale(0.95);
+}
+
+.directories-list {
+  background-color: #36302f;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #4f4a49;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.directory-item {
+  position: relative;
+}
+
+.directory-content {
+  margin: 0.375rem 0;
+  padding: 0.375rem 1rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.directory-content:hover {
+  background: #4f4a49;
+  transform: translateX(4px);
+  border-color: rgba(219, 52, 52, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.directory-content.selected {
+  background: linear-gradient(135deg, #00000015, #ffffff3b);
+  color: #232222;
+  border-color: rgba(124, 126, 130, 0.2);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+.directory-content.hidden {
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.directory-content.drag-over {
+  background-color: rgba(37, 99, 235, 0.1);
+}
+
+.directory-content.drag-over::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px dashed #2563eb;
+  border-radius: 0.25rem;
+  pointer-events: none;
+}
+
+.collapse-button {
+  min-width: 16px;
+  height: 16px;
+  border: none;
+  background: #e24a4a;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.collapse-button-placeholder {
+  width: 16px;
+  margin-right: 4px;
+}
+
+.directory-name {
+  color: #e7d9cf;
+  transition: color 0.2s ease;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.directory-children {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.5rem;
+  border-left: 1px solid #e5e7eb;
+  margin-top: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+.directory-actions {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  gap: 4px;
+  display: none;
+}
+
+.directory-content:hover .directory-actions {
+  display: flex;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  color: #e7d9cf;
+  font-size: 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.action-button:hover {
+  background-color: #4f4a49;
+  color: #e24a4a;
+}
+
+.delete-button:hover {
+  color: #dc2626;
+}
+
+.add-button:hover {
+  color: #059669;
+}
+
+.edit-form-nav,
+.add-subdir-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: #3a3737;
+  padding: 8px;
+  border-radius: 8px;
+  width: 95%;
+  max-width: 200px;
+}
+
+.edit-form-nav input,
+.add-subdir-form input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #4f4a49;
+  color: #b1bed0;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.edit-form-nav input:focus,
+.add-subdir-form input:focus {
+  border-color: #db3434;
+  box-shadow: 0 0 4px rgba(219, 52, 52, 0.5);
+}
+
+.edit-form-nav-buttons,
+.add-subdir-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+}
+
+.edit-form-nav-buttons button,
+.add-subdir-form button {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.edit-form-nav-buttons button:first-child,
+.add-subdir-form button:first-child {
+  background: #db3434;
+  color: white;
+}
+
+.edit-form-nav-buttons button:first-child:hover,
+.add-subdir-form button:first-child:hover {
+  background: #a51111;
+}
+
+.edit-form-nav-buttons button:last-child,
+.add-subdir-form button:last-child {
+  background: #6b6b6b;
+  color: white;
+}
+
+.edit-form-nav-buttons button:last-child:hover,
+.add-subdir-form button:last-child:hover {
+  background: #4a4a4a;
+}
+
+.bookmark-item {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
+  margin: 1px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.bookmark-item:hover {
+  background-color: #4f4a49;
+  transform: translateX(4px);
+  border-color: rgba(219, 52, 52, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.bookmark-link {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.bookmark-favicon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  min-width: 16px;
+}
+
+.bookmark-name {
+  display: inline-block;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  vertical-align: middle;
+  color: white;
+}
+
+.bookmark-remove {
+  opacity: 0;
+  background: none;
+  border: none;
+  color: #dc2626;
+  cursor: pointer;
+  padding: 2px 7px;
+  font-size: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.bookmark-item:hover .bookmark-remove {
+  opacity: 1;
+}
+
+.bookmark-item.dragging {
+  opacity: 0.5;
+  background-color: #f3f4f6;
+}
+
+.shared-icon {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #3b82f6;
+}
+
+.directory-content:hover .shared-icon {
+  transform: scale(1.15) rotate(15deg);
+  color: #2563eb;
+}
+
+.bookmark-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bookmark-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bookmark-nav::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.bookmark-nav:hover::-webkit-scrollbar-thumb {
+  background: #db3434;
+}

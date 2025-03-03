@@ -1,0 +1,23 @@
+body {
+    height:100%;
+    width:100%;
+}
+div.bookmarks {
+    display:flex;
+    
+}
+
+div.category {
+    padding-right : 5%;
+    border: 1px solid #ccc;
+    float:left;
+    width: 180px;
+}
+div.category img {
+    width:100%;
+    height: 100%;
+}
+
+div.category p {
+    color:brown;
+}

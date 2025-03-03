@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookmark Manager</title>
+    <link rel="stylesheet" href="main.css" />
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-compat.js"></script>
+    <script src="./config/config.js"></script>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <div class="popup-container">
+      <div class="buttons">
+        <button id="signIn" class="google-button">
+          <img
+            src="/resources/google-logo.svg"
+            alt="Google Icon"
+            class="icon"
+          />
+          Sign in with Google
+        </button>
+        <button id="quickSaveButton">
+          <img
+            src="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/icons/star.svg"
+            alt="Quick Save Icon"
+            class="icon"
+          />
+          <span id="quickSaveText">Quick Save</span>
+          <div id="spinner" class="spinner" style="display: none"></div>
+        </button>
+
+        <button id="saveButton">
+          <img
+            src="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/icons/bookmark.svg"
+            alt="Save Webpage Icon"
+            class="icon"
+          />
+          <span>Save Webpage</span>
+        </button>
+        <button id="signOut">
+          <img
+            src="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/icons/log-out.svg"
+            alt="Sign Out Icon"
+            class="icon"
+          />
+          <span>Sign Out</span>
+        </button>
+        <button id="downloadButton">
+          <img
+            src="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/icons/download.svg"
+            alt="Download Webpage Icon"
+            class="icon"
+          />
+          <span>Download Webpage</span>
+        </button>
+        <button id="bookmarksPageButton">
+          <img
+            src="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/icons/book-open.svg"
+            alt="Bookmarks Page Icon"
+            class="icon"
+          />
+          <span>Go to Bookmarks Page</span>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

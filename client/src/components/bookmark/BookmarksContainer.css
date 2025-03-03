@@ -1,0 +1,84 @@
+.bookmarks-content {
+  flex: 1;
+  padding: 1rem;
+  background: linear-gradient(to right, #322c2b, #3a3433);
+  min-height: 100vh;
+}
+
+.bookmarks-content h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #e7d9cf;
+  margin-bottom: 1.5rem;
+}
+
+.bookmarks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.bookmark-card {
+  transition: 0.2s ease-in-out;
+}
+
+.bookmark-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .bookmarks-content {
+    padding: 1rem;
+  }
+
+  .bookmarks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sort-label {
+  margin-right: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.sort-select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background-color: #504b4a;
+  color: #9e9b9b;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.sort-select:focus {
+  border-color: #db3434;
+  box-shadow: 0 0 4px #db3434;
+}
+
+.sort-select:hover {
+  border-color: #db3434;
+}
+
+.sort-select option {
+  background-color: #504b4a;
+  color: #9e9b9b;
+}
+
+.sort-select option::selection {
+  border-color: #db3434;
+}

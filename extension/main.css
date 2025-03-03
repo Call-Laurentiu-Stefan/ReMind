@@ -1,0 +1,184 @@
+:root {
+  --bg-primary: #322c2b;
+  --bg-secondary: #3a3433;
+  --text-primary: #ffffff;
+  --accent-color: #db3434;
+  --hover-color: #e24a4a;
+}
+
+body {
+  width: 250px;
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.popup-container {
+  padding: 15px;
+  background-color: var(--bg-secondary);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button {
+  position: relative;
+}
+
+button:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.02);
+}
+
+button .icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+}
+
+button span {
+  flex-grow: 1;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: 54px;
+  z-index: 1;
+}
+
+.google-button {
+  background-color: var(--accent-color);
+  color: white;
+  display: none;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.google-button .icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.google-button:hover {
+  background-color: var(--hover-color);
+}
+
+#signOut .icon {
+  filter: invert(1);
+}
+
+#saveButton .icon,
+#downloadButton .icon,
+#bookmarksPageButton .icon,
+#quickSaveButton .icon {
+  filter: invert(1);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: var(--text-primary);
+}
+
+button.saved {
+  background-color: #4caf50;
+  transform: scale(1.05);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.saved .icon {
+  animation: iconAnimation 0.6s ease-in-out;
+}
+
+@keyframes iconAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+button.saved span {
+  content: "Saved!";
+  display: block;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+}
+
+.spinner {
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
